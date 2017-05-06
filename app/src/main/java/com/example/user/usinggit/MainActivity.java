@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
           第二個參數代表你是Menu Item Id,
           第三個參數是你放入Item的順序,假如你都設為Menu.NONE代表使用預設
           第四個參數就是你想要放入的標題*/
-        for(int i = 0; i < 5; i++){
-            menu.add(Menu.NONE, Menu.FIRST + i, Menu.NONE, "Item " + Integer.toString(i + 1));
-        }
+        menu.add(Menu.NONE, Menu.FIRST + R.string.setting, Menu.NONE, R.string.setting);
+        menu.add(Menu.NONE, Menu.FIRST + R.string.about, Menu.NONE, R.string.about);
+        menu.add(Menu.NONE, Menu.FIRST + R.string.exit, Menu.NONE, R.string.exit);
         return super.onCreateOptionsMenu(menu);
     }
 }
