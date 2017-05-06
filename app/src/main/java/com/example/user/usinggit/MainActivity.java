@@ -1,6 +1,8 @@
 package com.example.user.usinggit;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,7 +11,6 @@ import android.widget.Toast;
 import static com.example.user.usinggit.R.string.about;
 import static com.example.user.usinggit.R.string.exit;
 import static com.example.user.usinggit.R.string.setting;
-
 
 
 public class MainActivity extends AppCompatActivity {
@@ -35,13 +36,12 @@ public class MainActivity extends AppCompatActivity {
         menu.add(MAIN_GROUP_ITEM, EXIT, Menu.NONE, exit);
         return super.onCreateOptionsMenu(menu);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {//處理按下Menu Item以後的動作
         if(item.getGroupId() == MAIN_GROUP_ITEM){
             if(item.getItemId() == EXIT){//按下 "離開" 按鈕 的動作
-                Toast.makeText(getApplicationContext(),
-                        "按下了離開",
-                        Toast.LENGTH_SHORT).show();
+                dialog_exit();
             }
             if(item.getItemId() == SETTING){//按下 "設定" 按鈕 的動作
                 Toast.makeText(getApplicationContext(),
@@ -49,12 +49,36 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
             if(item.getItemId() == ABOUT){//按下 "關於" 按鈕 的動作
-                Toast.makeText(getApplicationContext(),
-                        "按下了關於",
-                        Toast.LENGTH_SHORT).show();
+                dialog_about();
             }
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void dialog_exit(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("確定要離開嗎?");
+        builder.setPositiveButton("確認", new DialogInterface.OnClickListener()  {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss(); //dismiss為關閉dialog,Activity還會保留dialog的狀態
+                MainActivity.this.finish();//關閉activity
+            }
+        });
+
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener()  {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+    }
+
+    private void dialog_about(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setMessage("內容なし");
+        builder.show();
     }
 }
