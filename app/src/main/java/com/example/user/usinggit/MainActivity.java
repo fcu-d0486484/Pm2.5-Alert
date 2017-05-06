@@ -1,12 +1,12 @@
 package com.example.user.usinggit;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import static com.example.user.usinggit.R.string.about;
 import static com.example.user.usinggit.R.string.exit;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     @Override
@@ -44,9 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog_exit();
             }
             if(item.getItemId() == SETTING){//按下 "設定" 按鈕 的動作
-                Toast.makeText(getApplicationContext(),
-                        "按下了設定",
-                        Toast.LENGTH_SHORT).show();
+                goSetting();
             }
             if(item.getItemId() == ABOUT){//按下 "關於" 按鈕 的動作
                 dialog_about();
@@ -80,5 +79,10 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setMessage("內容なし");
         builder.show();
+    }
+
+    private void goSetting(){
+        Intent intent = new Intent(MainActivity.this, Setting.class);
+        startActivity(intent);
     }
 }
