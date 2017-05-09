@@ -7,6 +7,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import static com.example.user.usinggit.R.string.about;
 import static com.example.user.usinggit.R.string.exit;
@@ -22,7 +27,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ListView mclass = (ListView)findViewById(R.id.mylist);
+        ArrayList<placepm> testlist=new ArrayList<>();
+        testlist.add(new placepm("Taichung",12.5));
+        locarrayadapter outlist=new locarrayadapter(this,testlist);
+        mclass.setAdapter(outlist);
     }
 
     @Override

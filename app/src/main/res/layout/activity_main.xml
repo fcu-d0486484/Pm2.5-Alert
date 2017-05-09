@@ -19,17 +19,16 @@
         android:layout_alignParentStart="true">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="User Name" />
+            android:text="ViewPM2.5"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editText" />
-
+        <ListView
+            android:id="@+id/mylist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </RelativeLayout>
