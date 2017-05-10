@@ -3,15 +3,23 @@ package com.example.user.usinggit;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.InputStream;
 import java.util.ArrayList;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import static com.example.user.usinggit.R.string.about;
 import static com.example.user.usinggit.R.string.exit;
@@ -19,21 +27,80 @@ import static com.example.user.usinggit.R.string.setting;
 
 
 public class MainActivity extends AppCompatActivity {
+
     static int SETTING = 123;//Menu Item Id
     static int ABOUT = 456;//Menu Item Id
     static int EXIT = 789;//Menu Item Id
     static int MAIN_GROUP_ITEM = 101;//Menu Item GROUP ID
+
+    InputStream pmfile=null;
+    final String url=new String("http://opendata.epa.gov.tw/ws/Data/ATM00625/?$skip=0&$top=1000&format=xml");
+    Button trycon;
+    Button mklist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        this.setContentView(R.layout.waitingconnect);
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+        trycon=(Button)findViewById(R.id.Trybtn);
+        trycon.setOnClickListener(clickget);
+        mklist=(Button)findViewById(R.id.mkbtn);
+        mklist.setOnClickListener(listgen);
+    }
+    private View.OnClickListener listgen=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(pmfile!=null){
+                makelist();
+            }
+            else{
+                Toast.makeText(MainActivity.this,"There is no data to show",Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
+    private View.OnClickListener clickget=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast t=Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT);
+
+            Thread getthread=new Thread(getxml);
+            getthread.run();
+                if(pmfile==null)
+                    Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private Runnable getxml=new Runnable(){
+        @Override
+        public void run() {
+            GetPmXml getxml=new GetPmXml();
+            pmfile=getxml.getInputStream(url);
+        }
+    };
+    private void makelist(){
+        this.setContentView(R.layout.activity_main);
+        Pmhandler pmhandler=new Pmhandler();
+        SAXParserFactory factory;
+        factory=SAXParserFactory.newInstance();
+        SAXParser parser;
+        parser=null;
+        try {
+            parser=factory.newSAXParser();
+            parser.parse(pmfile,pmhandler);
+            pmfile.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         ListView mclass = (ListView)findViewById(R.id.mylist);
-        ArrayList<placepm> testlist=new ArrayList<>();
-        testlist.add(new placepm("Taichung",12.5));
+        ArrayList<PM> testlist=pmhandler.getPMs();
         locarrayadapter outlist=new locarrayadapter(this,testlist);
         mclass.setAdapter(outlist);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {//右上角那三個點點的設定 利用 'menu物件'
         //menu.add(groupId, itemId, order, title) 用這方式加入 item

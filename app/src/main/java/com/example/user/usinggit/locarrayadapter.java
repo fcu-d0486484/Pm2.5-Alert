@@ -17,9 +17,9 @@ import java.util.ArrayList;
  * Created by willc on 2017/5/9.
  */
 
-public class locarrayadapter extends ArrayAdapter<placepm>{
+public class locarrayadapter extends ArrayAdapter<PM>{
     Context context;
-    public locarrayadapter(Context context, ArrayList<placepm> items){
+    public locarrayadapter(Context context, ArrayList<PM> items){
         super(context,0,items);
         this.context=context;
     }
@@ -35,16 +35,19 @@ public class locarrayadapter extends ArrayAdapter<placepm>{
         } else {
             itemlayout = (LinearLayout) convertView;
         }
-        placepm item = (placepm) getItem(position);
+        PM item = (PM)getItem(position);
 
         TextView loc = (TextView)itemlayout.
                 findViewById(R.id.loctext);
-        loc.setText(item.loc);
-
+        loc.setText(item.getLoc());
         TextView pmvalue = (TextView) itemlayout.
                 findViewById(R.id.PMvalue);
-        String tmp=("  PM2.5 is "+item.pm);
-        pmvalue.setText(tmp);
+        String pmtext=new String(" PM2.5 is "+item.getValue());
+        pmvalue.setText(pmtext);
+        String sitetext=new String(" 監測站:"+item.getSite());
+        TextView site = (TextView) itemlayout.
+                findViewById(R.id.SiteText);
+        site.setText(sitetext);
         return itemlayout;
     }
 }
