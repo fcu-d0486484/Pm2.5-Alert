@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             Thread getthread = new Thread(getxml);
             getthread.start();
             while (true) {
-                if (pmfile == null)
+                if (getthread.isAlive())
                     continue;
                 else {
                     Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
