@@ -41,10 +41,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.waitingconnect);
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
         trycon=(Button)findViewById(R.id.Trybtn);
         trycon.setOnClickListener(clickget);
         mklist=(Button)findViewById(R.id.mkbtn);
@@ -64,14 +60,18 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener clickget=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast t=Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT);
+            Toast t = Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT);
 
-            Thread getthread=new Thread(getxml);
-            getthread.run();
-                if(pmfile==null)
-                    Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(MainActivity.this,"Success",Toast.LENGTH_SHORT).show();
+            Thread getthread = new Thread(getxml);
+            getthread.start();
+            while (true) {
+                if (pmfile == null)
+                    continue;
+                else {
+                    Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+            }
         }
     };
 
