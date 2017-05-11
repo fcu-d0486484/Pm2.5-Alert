@@ -1,6 +1,9 @@
 package com.example.user.usinggit;
 
+import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.net.HttpRetryException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -17,17 +20,18 @@ public class GetPmXml {
         }catch (Exception e){
             e.printStackTrace();
         }
-        URLConnection connection=null;
+        HttpURLConnection connection=null;
         try{
-            connection=url.openConnection();
+            connection=(HttpURLConnection) url.openConnection();
         }catch (Exception e){
             e.printStackTrace();
         }
         try {
-            inputStream=connection.getInputStream();
+            inputStream=new BufferedInputStream(connection.getInputStream());
         }catch (Exception e){
             e.printStackTrace();
         }
+        connection.disconnect();
         return inputStream;
     }
 }

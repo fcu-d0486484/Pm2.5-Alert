@@ -69,4 +69,10 @@
         android:layout_gravity="right|center_vertical"
         android:layout_marginRight="40sp"
         android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Version" />
 </LinearLayout>
