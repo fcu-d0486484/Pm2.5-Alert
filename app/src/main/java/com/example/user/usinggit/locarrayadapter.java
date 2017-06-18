@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -42,11 +41,20 @@ public class locarrayadapter extends ArrayAdapter<PM>{
         loc.setText(item.getLoc());
         TextView pmvalue = (TextView) itemlayout.
                 findViewById(R.id.PMvalue);
-        String pmtext=new String(" PM2.5 is "+item.getValue());
-        pmvalue.setText(pmtext);
-        String sitetext=new String(" 監測站:"+item.getSite());
-        TextView site = (TextView) itemlayout.
-                findViewById(R.id.SiteText);
+
+       if(item.getValue() == null){
+           String pmtext = new String(" PM2.5 is  " + item.getValue());
+           pmvalue.setText(pmtext);
+       }else if( Integer.parseInt(item.getValue()) < 10 ) {
+            String pmtext = new String(" PM2.5 is " + "     " + item.getValue());
+            pmvalue.setText(pmtext);
+       }else{
+            String pmtext = new String(" PM2.5 is    " + item.getValue());
+            pmvalue.setText(pmtext);
+       }
+
+        String sitetext=new String("                         監測站:"+item.getSite());
+        TextView site = (TextView) itemlayout.findViewById(R.id.SiteText);
         site.setText(sitetext);
         return itemlayout;
     }

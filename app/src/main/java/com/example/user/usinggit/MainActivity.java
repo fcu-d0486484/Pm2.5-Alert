@@ -3,16 +3,13 @@ package com.example.user.usinggit;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
@@ -24,13 +21,14 @@ import javax.xml.parsers.SAXParserFactory;
 import static com.example.user.usinggit.R.string.about;
 import static com.example.user.usinggit.R.string.exit;
 import static com.example.user.usinggit.R.string.setting;
-
+import static com.example.user.usinggit.R.string.pm25doc;
 
 public class MainActivity extends AppCompatActivity {
 
     static int SETTING = 123;//Menu Item Id
     static int ABOUT = 456;//Menu Item Id
     static int EXIT = 789;//Menu Item Id
+    static int PM25DOC = 888;//Menu Item Id
     static int MAIN_GROUP_ITEM = 101;//Menu Item GROUP ID
 
     InputStream pmfile=null;
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mklist=(Button)findViewById(R.id.mkbtn);
         mklist.setOnClickListener(listgen);
     }
+
     private View.OnClickListener listgen=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -110,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
           第四個參數就是你想要放入的標題*/
         menu.add(MAIN_GROUP_ITEM, SETTING, Menu.NONE, setting);
         menu.add(MAIN_GROUP_ITEM, ABOUT, Menu.NONE, about);
+        menu.add(MAIN_GROUP_ITEM, PM25DOC, Menu.NONE, pm25doc);
         menu.add(MAIN_GROUP_ITEM, EXIT, Menu.NONE, exit);
         return super.onCreateOptionsMenu(menu);
     }
@@ -125,6 +125,12 @@ public class MainActivity extends AppCompatActivity {
             }
             if(item.getItemId() == ABOUT){//按下 "關於" 按鈕 的動作
                 dialog_about();
+            }
+            if(item.getItemId() == PM25DOC){//按下 "PM25DOC" 按鈕 的動作
+                /*intent 跳至 PM2.5 doc*/
+                Intent it = new Intent();
+                it.setClass(MainActivity.this, PM25DOC.class);
+                startActivity(it);
             }
         }
 
