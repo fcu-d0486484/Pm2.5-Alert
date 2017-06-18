@@ -2,10 +2,8 @@ package com.example.user.usinggit;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
-import java.net.HttpRetryException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * Created by willc on 2017/5/10.
@@ -13,22 +11,23 @@ import java.net.URLConnection;
 
 public class GetPmXml {
     InputStream inputStream;
+
     public InputStream getInputStream(String urltext) {
-        URL url=null;
+        URL url = null;
         try {
-            url=new URL(urltext);
-        }catch (Exception e){
+            url = new URL(urltext);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        HttpURLConnection connection=null;
-        try{
-            connection=(HttpURLConnection) url.openConnection();
-        }catch (Exception e){
+        HttpURLConnection connection = null;
+        try {
+            connection = (HttpURLConnection) url.openConnection();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            inputStream=new BufferedInputStream(connection.getInputStream());
-        }catch (Exception e){
+            inputStream = new BufferedInputStream(connection.getInputStream());
+        } catch (Exception e) {
             e.printStackTrace();
         }
         connection.disconnect();

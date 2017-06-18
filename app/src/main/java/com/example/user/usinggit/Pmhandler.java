@@ -1,10 +1,10 @@
 package com.example.user.usinggit;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import java.util.ArrayList;
 
 /**
  * Created by willc on 2017/5/9.
@@ -50,6 +50,7 @@ public class Pmhandler extends DefaultHandler{
         }
         tagname=localName;
     }
+
     @Override
     public void endElement(String uri, String localName, String qName)
             throws SAXException {

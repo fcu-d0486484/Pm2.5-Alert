@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="fpmi1">#ff9cff9c</color>
+    <color name="fpmi2">#ff31ff00</color>
+    <color name="fpmi3">#ff31cf00</color>
+    <color name="fpmi4">#ffffff00</color>
+    <color name="fpmi5">#ffffcf00</color>
+    <color name="fpmi6">#ffff9a00</color>
+    <color name="fpmi7">#ffff6464</color>
+    <color name="fpmi8">#ffff0000</color>
+    <color name="fpmi9">#ff990000</color>
+    <color name="fpmi10">#ffce30ff</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="fpmicolheader">#60606060</color>
 </resources>
