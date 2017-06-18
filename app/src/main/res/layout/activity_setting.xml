@@ -31,37 +31,37 @@
         android:layout_height="wrap_content"
         android:gravity="center" />
 
-    <Switch
+    <!--<Switch
         android:id="@+id/Switch01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CheckBox"
         android:layout_marginTop="10dp"
-        android:textSize="40dp"/>
+        android:textSize="40dp"/>-->
 
-    <Switch
+    <!--<Switch
         android:id="@+id/Switch0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="自爆程序"
         android:layout_marginTop="10dp"
-        android:textSize="40dp"/>
+        android:textSize="40dp"/>-->
 
-    <Switch
+    <!--<Switch
         android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Switch"
         android:layout_marginTop="10dp"
-        android:textSize="40dp"/>
+        android:textSize="40dp"/>-->
 
-    <Switch
+    <!--<Switch
         android:id="@+id/switch2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Switch"
         android:layout_marginTop="10dp"
-        android:textSize="40dp"/>
+        android:textSize="40dp"/>-->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
