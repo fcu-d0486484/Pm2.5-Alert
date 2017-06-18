@@ -2,8 +2,11 @@ package com.example.user.usinggit;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Setting extends AppCompatActivity {
 
@@ -29,5 +32,14 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+        Button completeBtn = (Button) findViewById(R.id.cmpBtn);
+        completeBtn.setOnClickListener(clickCmpBtn);
     }
+    private View.OnClickListener clickCmpBtn=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(Setting.this, "完成", Toast.LENGTH_SHORT).show();
+            finish();
+        }
+    };
 }
