@@ -46,7 +46,6 @@ public class Pmhandler extends DefaultHandler{
                              Attributes attributes) {
         if(localName.equals("Data")){
             pm=new PM();
-            pm.setDate(attributes.getValue("","DataCreationDate"));
         }
         tagname=localName;
     }

@@ -5,7 +5,7 @@
     <string name="setting">設定</string>
     <string name="pm25doc">PM2.5指標對照、活動建議</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="Version">0.5.2</string>
+    <string name="Version">0.6.0</string>
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->

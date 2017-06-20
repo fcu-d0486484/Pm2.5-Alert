@@ -22,10 +22,7 @@ public class GetPmXml {
         HttpURLConnection connection = null;
         try {
             connection = (HttpURLConnection) url.openConnection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
+            connection.connect();
             inputStream = new BufferedInputStream(connection.getInputStream());
         } catch (Exception e) {
             e.printStackTrace();

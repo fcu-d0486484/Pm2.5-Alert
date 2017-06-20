@@ -1,6 +1,8 @@
 package com.example.user.usinggit;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -81,26 +83,26 @@ public class locarrayadapter extends ArrayAdapter<PM>{
 
     @SuppressWarnings("ResourceAsColor")
     public void colorChoice(PM item, TextView pmvalue){
-        if(Integer.parseInt(item.getValue()) == 1){
-            pmvalue.setTextColor(fpmi1);
-        }else if(Integer.parseInt(item.getValue()) == 2){
-            pmvalue.setTextColor(fpmi2);
-        }else if(Integer.parseInt(item.getValue()) == 3){
-            pmvalue.setTextColor(fpmi3);
-        }else if(Integer.parseInt(item.getValue()) == 4){
-            pmvalue.setTextColor(fpmi4);
-        }else if(Integer.parseInt(item.getValue()) == 5){
-            pmvalue.setTextColor(fpmi5);
-        }else if(Integer.parseInt(item.getValue()) == 6){
-            pmvalue.setTextColor(fpmi6);
-        }else if(Integer.parseInt(item.getValue()) == 7){
-            pmvalue.setTextColor(fpmi7);
-        }else if(Integer.parseInt(item.getValue()) == 8){
-            pmvalue.setTextColor(fpmi8);
-        }else if(Integer.parseInt(item.getValue()) == 9){
-            pmvalue.setTextColor(fpmi9);
+        if(Integer.parseInt(item.getValue()) >=0 && Integer.parseInt(item.getValue()) <=11){
+            pmvalue.setTextColor(Color.rgb(158,255,158));
+        }else if(Integer.parseInt(item.getValue()) >=12 && Integer.parseInt(item.getValue()) <=23){
+            pmvalue.setTextColor(Color.rgb(51,255,0));
+        }else if(Integer.parseInt(item.getValue()) >=24 && Integer.parseInt(item.getValue()) <=35){
+            pmvalue.setTextColor(Color.rgb(49,209,0));
+        }else if(Integer.parseInt(item.getValue()) >=36 && Integer.parseInt(item.getValue()) <=41){
+            pmvalue.setTextColor(Color.rgb(255,255,0));
+        }else if(Integer.parseInt(item.getValue()) >=42 && Integer.parseInt(item.getValue()) <=47){
+            pmvalue.setTextColor(Color.rgb(255,208,0));
+        }else if(Integer.parseInt(item.getValue()) >=48 && Integer.parseInt(item.getValue()) <=53){
+            pmvalue.setTextColor(Color.rgb(255,153,0));
+        }else if(Integer.parseInt(item.getValue()) >=54 && Integer.parseInt(item.getValue()) <=58){
+            pmvalue.setTextColor(Color.rgb(255,102,102));
+        }else if(Integer.parseInt(item.getValue()) >=59 && Integer.parseInt(item.getValue()) <=64){
+            pmvalue.setTextColor(Color.rgb(255,0,0));
+        }else if(Integer.parseInt(item.getValue()) >=65 && Integer.parseInt(item.getValue()) <=70){
+            pmvalue.setTextColor(Color.rgb(153,0,0));
         }else{
-            pmvalue.setTextColor(fpmi10);
+            pmvalue.setTextColor(Color.rgb(206,46,255));
         }
 
     }

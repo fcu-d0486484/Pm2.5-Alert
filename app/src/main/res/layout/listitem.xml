@@ -19,6 +19,7 @@
         android:layout_weight="0.23"
         android:text="TextView"
         android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="#000000"
         android:textSize="18sp" />
 
     <TextView
